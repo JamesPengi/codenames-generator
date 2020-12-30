@@ -1,5 +1,12 @@
+.body {
+  background-color: #282c34;
+  height: 100%;
+  margin: 100%;
+}
+
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -35,4 +42,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.table {
+  padding: 5px;
+}
+.cell {
+  padding: 50px;
+  border-color: black;
+  border-width: 10px;
+}
+
+.red1, .red2, .red3, .red4, .red5, .red6, .red7, .red8 {
+  background-color: red;
+}
+
+.blue1, .blue2, .blue3, .blue4, .blue5, .blue6, .blue7, .blue8 {
+  background-color: blue;
+}
+
+.white1, .white2, .white3, .white4, .white5, .white6, .white7, .white8 {
+  background-color: white;
+}
+
+.black1 { 
+  background-color: black;
+}
+
+.wildcard1 {
+  background-color: chartreuse;
 }
