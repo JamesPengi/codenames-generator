@@ -4,8 +4,6 @@
   min-width: 100vw;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
   text-align: center;
@@ -27,23 +25,28 @@ h1 {
   border-width: 1vmin;
 }
 
-.red1, .red2, .red3, .red4, .red5, .red6, .red7, .red8 {
+.red {
   background-color: red;
 }
 
-.blue1, .blue2, .blue3, .blue4, .blue5, .blue6, .blue7, .blue8 {
+.blue {
   background-color: blue;
 }
 
-.white1, .white2, .white3, .white4, .white5, .white6, .white7, .white8 {
+.white {
   background-color: white;
 }
 
-.black1 { 
+.black { 
   background-color: black;
 }
 
-.wildcard1 {
+.wildcard {
   background-color: chartreuse;
 }
 
+.footer {
+  margin-top: 2vh;
+  font-size: 0.4em;
+  color: rgba(255, 255, 255, 0.4)
+}

@@ -5,11 +5,11 @@ import { sample, indexOf } from 'lodash'
 
 export default class App extends Component {
   state = {
-    gameTable: [],
+    isGenerated: false
   }
 
-  _generateTables() {
-    var cards = ['red1', 'red2', 'red3', 'red4', 'red5', 'red6', 'red7', 'red8', 'blue1', 'blue2', 'blue3', 'blue4', 'blue5', 'blue6', 'blue7', 'blue8', 'black1', 'white1', 'white2', 'white3', 'white4', 'white5', 'white6', 'white7', 'wildcard1']
+  _generateTable() {
+    var cards = ['red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'black', 'white', 'white', 'white', 'white', 'white', 'white', 'white', 'wildcard']
     var gameTable = []
 
     while(gameTable.length <= 25) {
@@ -18,23 +18,29 @@ export default class App extends Component {
       gameTable.push(x)
     }
 
+    const firstRow = [gameTable[0], gameTable[1], gameTable[2], gameTable[3], gameTable[4]]
+    const secondRow = [gameTable[5], gameTable[6], gameTable[7], gameTable[8], gameTable[9]]
+    const thirdRow = [gameTable[10], gameTable[11], gameTable[12], gameTable[13], gameTable[14]]
+    const fourthRow = [gameTable[15], gameTable[16], gameTable[17], gameTable[18], gameTable[19]]
+    const fifthRow = [gameTable[20], gameTable[21], gameTable[22], gameTable[23], gameTable[24]]
+
     this.setState({
-      gameTable: gameTable
+      firstRow: firstRow,
+      secondRow: secondRow,
+      thirdRow: thirdRow,
+      fourthRow: fourthRow,
+      fifthRow: fifthRow,
+      isGenerated: true
     })
   }
 
   render() {
-    var firstRow = [this.state.gameTable[0], this.state.gameTable[1], this.state.gameTable[2], this.state.gameTable[3], this.state.gameTable[4]]
-    var secondRow = [this.state.gameTable[5], this.state.gameTable[6], this.state.gameTable[7], this.state.gameTable[8], this.state.gameTable[9]]
-    var thirdRow = [this.state.gameTable[10], this.state.gameTable[11], this.state.gameTable[12], this.state.gameTable[13], this.state.gameTable[14]]
-    var fourthRow = [this.state.gameTable[15], this.state.gameTable[16], this.state.gameTable[17], this.state.gameTable[18], this.state.gameTable[19]]
-    var fifthRow = [this.state.gameTable[20], this.state.gameTable[21], this.state.gameTable[22], this.state.gameTable[23], this.state.gameTable[24]]
-
+    var { firstRow, secondRow, thirdRow, fourthRow, fifthRow } = this.state
     return (
       <div className="container">
         <h1>Codenames Generator</h1>
           {
-            this.state.gameTable.length === 0 ?
+            !this.state.isGenerated ?
             <div />
             :
             <table className="table">
@@ -42,7 +48,7 @@ export default class App extends Component {
                 {
                   firstRow.map((item, index) => {
                     return (
-                      <td className={`cell ${item}`}></td>
+                      <td key={index} className={`cell ${item}`}></td>
                     )
                   })
                 }
@@ -51,7 +57,7 @@ export default class App extends Component {
                 {
                   secondRow.map((item, index) => {
                     return (
-                      <td className={`cell ${item}`}></td>
+                      <td key={index} className={`cell ${item}`}></td>
                     )
                   })
                 }
@@ -60,7 +66,7 @@ export default class App extends Component {
                 {
                   thirdRow.map((item, index) => {
                     return (
-                      <td className={`cell ${item}`}></td>
+                      <td key={index} className={`cell ${item}`}></td>
                     )
                   })
                 }
@@ -69,16 +75,17 @@ export default class App extends Component {
                 {
                   fourthRow.map((item, index) => {
                     return (
-                      <td className={`cell ${item}`}></td>
+                      <td key={index} className={`cell ${item}`}></td>
                     )
                   })
                 }
               </tr>
               <tr>
+
                 {
                   fifthRow.map((item, index) => {
                     return (
-                      <td className={`cell ${item}`}></td>
+                      <td key={index} className={`cell ${item}`}></td>
                     )
                   })
                 }
@@ -86,7 +93,10 @@ export default class App extends Component {
             </table>
           }
           <div className="generate-button">
-            <button className="btn btn-lg btn-light" onClick={() => this._generateTables()}>Generate Table</button>
+            <button className="btn btn-lg btn-light" onClick={() => this._generateTable()}>Generate Table</button>
+          </div>
+          <div className="footer">
+            <small>Made with :acheart: by Pengi</small>
           </div>
       </div>
     );
