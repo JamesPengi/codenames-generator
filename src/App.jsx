@@ -91,7 +91,7 @@ export default class App extends Component {
   render() {
     var { firstRow, secondRow, thirdRow, fourthRow, fifthRow } = this.state;
     return (
-      <div className='bg-blue-700 min-h-screen min-v-screen flex flex-col mx-auto my-auto px-4 text-center'>
+      <div className='bg-blue-900 min-h-screen min-v-screen flex flex-col mx-auto my-auto px-4 text-center'>
         <p className='text-white text-3xl md:text-4xl font-semibold my-10'>
           Codenames Generator
         </p>
@@ -203,7 +203,7 @@ export default class App extends Component {
         )}
         <div className='my-4'>
           <button
-            className='h-12 px-6 m-2 font-medium text-lg bg-white text-gray-800 transition-colors duration-150 text-white rounded-lg focus:shadow-outline hover:bg-gray-200'
+            className='h-12 px-6 m-2 font-medium text-lg bg-white text-gray-800 transition-colors duration-150 rounded-lg focus:shadow-outline hover:bg-gray-200'
             onClick={() => this._generateTable()}
           >
             Generate Table

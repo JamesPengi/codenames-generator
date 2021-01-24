@@ -1,22 +1,20 @@
 {
   "name": "codenames-generator",
-  "version": "1.0",
+  "version": "1.1",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^6.0.0",
-    "@tailwindcss/postcss7-compat": "^2.0.2",
-    "autoprefixer": "^9",
     "lodash": "^4.17.20",
-    "postcss": "^7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "react-scripts": "4.0.1"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "prestart": "yarn build:styles",
+    "start": "react-scripts start",
+    "prebuild": "cross-env NODE_ENV=production yarn build:styles",
+    "build:styles": "postcss src/index.css -o src/tailwind.generated.css",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -36,5 +34,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.3",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.2.4",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.2"
   }
 }
