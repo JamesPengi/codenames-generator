@@ -100,7 +100,7 @@ export default class App extends Component {
     var { firstRow, secondRow, thirdRow, fourthRow, fifthRow, firstTeam } =
       this.state;
     return (
-      <div className="bg-blue-900 min-h-screen min-v-screen flex flex-col mx-auto my-auto px-4 text-center">
+      <div className="bg-blue-900 min-h-screen min-v-screen flex flex-col mx-auto my-auto px-4 pb-1 text-center">
         <p className="text-white text-3xl md:text-4xl font-semibold my-10">
           Codenames Generator
         </p>
@@ -228,6 +228,30 @@ export default class App extends Component {
                   ></td>
                   <td className="p-5 md:p-7 lg:p-10"></td>
                   <td className="p-5 md:p-7 lg:p-10"></td>
+                </tr>
+              </table>
+            </div>
+            <div className="flex flex-col">
+              <table>
+                <tr>
+                  <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
+                    Blue Team
+                  </td>
+                  <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
+                    Red Team
+                  </td>
+                  <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
+                    Neutral
+                  </td>
+                  <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
+                    Death
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-5 md:p-7 lg:p-10 bg-royalBlue-700 border border-black"></td>
+                  <td className="p-5 md:p-7 lg:p-10 bg-red-600 border border-black"></td>
+                  <td className="p-5 md:p-7 lg:p-10 bg-white border border-black"></td>
+                  <td className="p-5 md:p-7 lg:p-10 bg-black border border-black"></td>
                 </tr>
               </table>
             </div>
