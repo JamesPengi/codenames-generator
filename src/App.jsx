@@ -100,7 +100,7 @@ export default class App extends Component {
     var { firstRow, secondRow, thirdRow, fourthRow, fifthRow, firstTeam } =
       this.state;
     return (
-      <div className="bg-blue-900 min-h-screen min-v-screen flex flex-col mx-auto my-auto px-4 pb-1 text-center">
+      <div className="bg-blue-900 min-h-screen min-v-screen flex flex-col mx-auto my-auto px-4 pb-3 text-center">
         <p className="text-white text-3xl md:text-4xl font-semibold my-10">
           Codenames Generator
         </p>
@@ -109,150 +109,158 @@ export default class App extends Component {
         ) : (
           <div className="flex flex-col">
             <table>
-              <tr>
-                {firstRow.map((item, index) => {
-                  return (
-                    <td
-                      key={index}
-                      className={`p-5 md:p-7 lg:p-10 border border-black ${
-                        item === `red`
-                          ? `bg-red-600`
-                          : item === `blue`
-                          ? `bg-royalBlue-700`
-                          : item === `white`
-                          ? `bg-white`
-                          : item === `black`
-                          ? `bg-black`
-                          : `bg-lime-400`
-                      }`}
-                    ></td>
-                  );
-                })}
-              </tr>
-              <tr>
-                {secondRow.map((item, index) => {
-                  return (
-                    <td
-                      key={index}
-                      className={`p-5 md:p-7 lg:p-10 border border-black ${
-                        item === `red`
-                          ? `bg-red-600`
-                          : item === `blue`
-                          ? `bg-royalBlue-700`
-                          : item === `white`
-                          ? `bg-white`
-                          : item === `black`
-                          ? `bg-black`
-                          : `bg-lime-400`
-                      }`}
-                    ></td>
-                  );
-                })}
-              </tr>
-              <tr>
-                {thirdRow.map((item, index) => {
-                  return (
-                    <td
-                      key={index}
-                      className={`p-5 md:p-7 lg:p-10 border border-black ${
-                        item === `red`
-                          ? `bg-red-600`
-                          : item === `blue`
-                          ? `bg-royalBlue-700`
-                          : item === `white`
-                          ? `bg-white`
-                          : item === `black`
-                          ? `bg-black`
-                          : `bg-lime-400`
-                      }`}
-                    ></td>
-                  );
-                })}
-              </tr>
-              <tr>
-                {fourthRow.map((item, index) => {
-                  return (
-                    <td
-                      key={index}
-                      className={`p-5 md:p-7 lg:p-10 border border-black ${
-                        item === `red`
-                          ? `bg-red-600`
-                          : item === `blue`
-                          ? `bg-royalBlue-700`
-                          : item === `white`
-                          ? `bg-white`
-                          : item === `black`
-                          ? `bg-black`
-                          : `bg-lime-400`
-                      }`}
-                    ></td>
-                  );
-                })}
-              </tr>
-              <tr>
-                {fifthRow.map((item, index) => {
-                  return (
-                    <td
-                      key={index}
-                      className={`p-5 md:p-7 lg:p-10 border border-black ${
-                        item === `red`
-                          ? `bg-red-600`
-                          : item === `blue`
-                          ? `bg-royalBlue-700`
-                          : item === `white`
-                          ? `bg-white`
-                          : item === `black`
-                          ? `bg-black`
-                          : `bg-lime-400`
-                      }`}
-                    ></td>
-                  );
-                })}
-              </tr>
+              <tbody>
+                <tr>
+                  {firstRow.map((item, index) => {
+                    return (
+                      <td
+                        key={index}
+                        className={`p-5 md:p-7 lg:p-10 border border-black ${
+                          item === `red`
+                            ? `bg-red-600`
+                            : item === `blue`
+                            ? `bg-royalBlue-700`
+                            : item === `white`
+                            ? `bg-white`
+                            : item === `black`
+                            ? `bg-black`
+                            : `bg-lime-400`
+                        }`}
+                      ></td>
+                    );
+                  })}
+                </tr>
+                <tr>
+                  {secondRow.map((item, index) => {
+                    return (
+                      <td
+                        key={index}
+                        className={`p-5 md:p-7 lg:p-10 border border-black ${
+                          item === `red`
+                            ? `bg-red-600`
+                            : item === `blue`
+                            ? `bg-royalBlue-700`
+                            : item === `white`
+                            ? `bg-white`
+                            : item === `black`
+                            ? `bg-black`
+                            : `bg-lime-400`
+                        }`}
+                      ></td>
+                    );
+                  })}
+                </tr>
+                <tr>
+                  {thirdRow.map((item, index) => {
+                    return (
+                      <td
+                        key={index}
+                        className={`p-5 md:p-7 lg:p-10 border border-black ${
+                          item === `red`
+                            ? `bg-red-600`
+                            : item === `blue`
+                            ? `bg-royalBlue-700`
+                            : item === `white`
+                            ? `bg-white`
+                            : item === `black`
+                            ? `bg-black`
+                            : `bg-lime-400`
+                        }`}
+                      ></td>
+                    );
+                  })}
+                </tr>
+                <tr>
+                  {fourthRow.map((item, index) => {
+                    return (
+                      <td
+                        key={index}
+                        className={`p-5 md:p-7 lg:p-10 border border-black ${
+                          item === `red`
+                            ? `bg-red-600`
+                            : item === `blue`
+                            ? `bg-royalBlue-700`
+                            : item === `white`
+                            ? `bg-white`
+                            : item === `black`
+                            ? `bg-black`
+                            : `bg-lime-400`
+                        }`}
+                      ></td>
+                    );
+                  })}
+                </tr>
+                <tr>
+                  {fifthRow.map((item, index) => {
+                    return (
+                      <td
+                        key={index}
+                        className={`p-5 md:p-7 lg:p-10 border border-black ${
+                          item === `red`
+                            ? `bg-red-600`
+                            : item === `blue`
+                            ? `bg-royalBlue-700`
+                            : item === `white`
+                            ? `bg-white`
+                            : item === `black`
+                            ? `bg-black`
+                            : `bg-lime-400`
+                        }`}
+                      ></td>
+                    );
+                  })}
+                </tr>
+              </tbody>
             </table>
             <div className="flex flex-col my-5">
               <div className="text-white font-bold text-sm uppercase">
                 {firstTeam} starts!
               </div>
               <table>
-                <tr>
-                  <td className="p-5 md:p-7 lg:p-10"></td>
-                  <td className="p-5 md:p-7 lg:p-10"></td>
-                  <td
-                    className={`
-                      ${
-                        firstTeam === 'blue' ? `bg-royalBlue-700` : `bg-red-600`
-                      }
-                      border border-black p-5 md:p-7 lg:p-10
-                    `}
-                  ></td>
-                  <td className="p-5 md:p-7 lg:p-10"></td>
-                  <td className="p-5 md:p-7 lg:p-10"></td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td className="p-5 md:p-7 lg:p-10"></td>
+                    <td className="p-5 md:p-7 lg:p-10"></td>
+                    <td
+                      className={`
+                        ${
+                          firstTeam === 'blue'
+                            ? `bg-royalBlue-700`
+                            : `bg-red-600`
+                        }
+                        border border-black p-5 md:p-7 lg:p-10
+                      `}
+                    ></td>
+                    <td className="p-5 md:p-7 lg:p-10"></td>
+                    <td className="p-5 md:p-7 lg:p-10"></td>
+                  </tr>
+                </tbody>
               </table>
             </div>
             <div className="flex flex-col">
               <table>
-                <tr>
-                  <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
-                    Blue Team
-                  </td>
-                  <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
-                    Red Team
-                  </td>
-                  <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
-                    Neutral
-                  </td>
-                  <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
-                    Death
-                  </td>
-                </tr>
-                <tr>
-                  <td className="p-5 md:p-7 lg:p-10 bg-royalBlue-700 border border-black"></td>
-                  <td className="p-5 md:p-7 lg:p-10 bg-red-600 border border-black"></td>
-                  <td className="p-5 md:p-7 lg:p-10 bg-white border border-black"></td>
-                  <td className="p-5 md:p-7 lg:p-10 bg-black border border-black"></td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
+                      Blue Agents
+                    </td>
+                    <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
+                      Red Agents
+                    </td>
+                    <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
+                      Bystanders
+                    </td>
+                    <td className="px-5 md:px-7 lg:px-10 text-white uppercase text-sm font-bold">
+                      Assassin
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-5 md:p-7 lg:p-10 bg-royalBlue-700 border border-black"></td>
+                    <td className="p-5 md:p-7 lg:p-10 bg-red-600 border border-black"></td>
+                    <td className="p-5 md:p-7 lg:p-10 bg-white border border-black"></td>
+                    <td className="p-5 md:p-7 lg:p-10 bg-black border border-black"></td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
