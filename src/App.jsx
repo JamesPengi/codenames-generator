@@ -5,6 +5,7 @@ import { MersenneTwister19937, pick } from 'random-js';
 export default class App extends Component {
   state = {
     isGenerated: false,
+    pickRandomStart: true,
   };
 
   _generateTable() {
@@ -35,10 +36,16 @@ export default class App extends Component {
       'white',
       'white',
     ];
+    var firstTeam;
 
-    // Pick first team and push to cards array
-    const firstTeam = pick(MersenneTwister19937.autoSeed(), ['red', 'blue']);
-    cards.push(firstTeam);
+    if (this.state.pickRandomStart) {
+      // Pick first team and push to cards array
+      firstTeam = pick(MersenneTwister19937.autoSeed(), ['red', 'blue']);
+      cards.push(firstTeam);
+    } else {
+      firstTeam = null;
+      cards.push('wildcard');
+    }
 
     // Pick and push cards to game table
     var gameTable = [];
@@ -97,8 +104,15 @@ export default class App extends Component {
   }
 
   render() {
-    var { firstRow, secondRow, thirdRow, fourthRow, fifthRow, firstTeam } =
-      this.state;
+    var {
+      firstRow,
+      secondRow,
+      thirdRow,
+      fourthRow,
+      fifthRow,
+      firstTeam,
+      pickRandomStart,
+    } = this.state;
     return (
       <div className="bg-blue-900 min-h-screen min-v-screen flex flex-col mx-auto my-auto px-4 pb-3 text-center">
         <p className="text-white text-3xl md:text-4xl font-semibold my-10">
@@ -212,17 +226,18 @@ export default class App extends Component {
                 </tr>
               </tbody>
             </table>
-            <div className="flex flex-col my-5">
-              <div className="text-white font-bold text-sm uppercase">
-                {firstTeam} starts!
-              </div>
-              <table>
-                <tbody>
-                  <tr>
-                    <td className="p-5 md:p-7 lg:p-10"></td>
-                    <td className="p-5 md:p-7 lg:p-10"></td>
-                    <td
-                      className={`
+            {firstTeam !== null ? (
+              <div className="flex flex-col mt-5">
+                <div className="text-white font-bold text-sm uppercase">
+                  {firstTeam} starts!
+                </div>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td className="p-5 md:p-7 lg:p-10"></td>
+                      <td className="p-5 md:p-7 lg:p-10"></td>
+                      <td
+                        className={`
                         ${
                           firstTeam === 'blue'
                             ? `bg-royalBlue-700`
@@ -230,14 +245,15 @@ export default class App extends Component {
                         }
                         border border-black p-5 md:p-7 lg:p-10
                       `}
-                    ></td>
-                    <td className="p-5 md:p-7 lg:p-10"></td>
-                    <td className="p-5 md:p-7 lg:p-10"></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="flex flex-col">
+                      ></td>
+                      <td className="p-5 md:p-7 lg:p-10"></td>
+                      <td className="p-5 md:p-7 lg:p-10"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ) : null}
+            <div className="flex flex-col mt-5">
               <table>
                 <tbody>
                   <tr>
@@ -265,13 +281,33 @@ export default class App extends Component {
             </div>
           </div>
         )}
-        <div className="my-4">
+        <div className="mt-4">
           <button
             className="h-12 px-6 m-2 font-medium text-lg bg-white text-gray-800 transition-colors duration-150 rounded-lg focus:shadow-outline hover:bg-gray-200"
             onClick={() => this._generateTable()}
           >
             Generate Board
           </button>
+        </div>
+        <div className="mb-4 mt-2">
+          <label
+            htmlFor="pickRandomTeam"
+            className="mx-2 text-white uppercase text-sm font-bold"
+          >
+            Randomly Pick First Team
+          </label>
+          <input
+            type="checkbox"
+            name="pickRandomTeam"
+            id="pickRandomTeam"
+            onChange={() =>
+              this.setState({
+                pickRandomStart: !pickRandomStart,
+              })
+            }
+            checked={pickRandomStart}
+            className="cursor-pointer"
+          />
         </div>
         <p className="text-xs text-gray-500">Made with :acheart: by Pengi</p>
       </div>
