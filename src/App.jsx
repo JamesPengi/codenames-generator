@@ -73,9 +73,7 @@ export default class App extends Component {
         <p className="text-white text-3xl md:text-4xl font-semibold my-10">
           Codenames Generator
         </p>
-        {!this.state.isGenerated ? (
-          <div />
-        ) : (
+        {!this.state.isGenerated && (
           <div className="flex flex-col">
             <table>
               <tbody>
@@ -105,7 +103,7 @@ export default class App extends Component {
                 })}
               </tbody>
             </table>
-            {firstTeam !== null ? (
+            {firstTeam && (
               <div className="flex flex-col mt-5">
                 <div className="text-white font-bold text-sm uppercase">
                   {firstTeam} starts!
@@ -131,7 +129,7 @@ export default class App extends Component {
                   </tbody>
                 </table>
               </div>
-            ) : null}
+            )}
             <div className="flex flex-col mt-5">
               <table>
                 <tbody>
