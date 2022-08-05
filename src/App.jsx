@@ -36,83 +36,38 @@ export default class App extends Component {
       'white',
       'white',
     ];
-    var firstTeam;
+    var firstTeam = null;
 
     if (this.state.pickRandomStart) {
       // Pick first team and push to cards array
       firstTeam = pick(MersenneTwister19937.autoSeed(), ['red', 'blue']);
       cards.push(firstTeam);
     } else {
-      firstTeam = null;
+      // Just push wildcard to cards array
       cards.push('wildcard');
     }
 
     // Pick and push cards to game table
-    var gameTable = [];
-    while (gameTable.length <= 25) {
-      var x = sample(cards);
-      cards.splice(indexOf(cards, x), 1);
-      gameTable.push(x);
+    var gameTable = new Array(5);
+    for (var i = 0; i < 5; i++) {
+      gameTable[i] = new Array(5);
+      for (var j = 0; j < 5; j++) {
+        var x = sample(cards);
+        cards.splice(indexOf(cards, x), 1);
+        gameTable[i][j] = x;
+      }
     }
-
-    const firstRow = [
-      gameTable[0],
-      gameTable[1],
-      gameTable[2],
-      gameTable[3],
-      gameTable[4],
-    ];
-    const secondRow = [
-      gameTable[5],
-      gameTable[6],
-      gameTable[7],
-      gameTable[8],
-      gameTable[9],
-    ];
-    const thirdRow = [
-      gameTable[10],
-      gameTable[11],
-      gameTable[12],
-      gameTable[13],
-      gameTable[14],
-    ];
-    const fourthRow = [
-      gameTable[15],
-      gameTable[16],
-      gameTable[17],
-      gameTable[18],
-      gameTable[19],
-    ];
-    const fifthRow = [
-      gameTable[20],
-      gameTable[21],
-      gameTable[22],
-      gameTable[23],
-      gameTable[24],
-    ];
 
     // Set state for display
     this.setState({
-      firstRow: firstRow,
-      secondRow: secondRow,
-      thirdRow: thirdRow,
-      fourthRow: fourthRow,
-      fifthRow: fifthRow,
+      gameTable: gameTable,
       isGenerated: true,
       firstTeam: firstTeam,
     });
   }
 
   render() {
-    var {
-      firstRow,
-      secondRow,
-      thirdRow,
-      fourthRow,
-      fifthRow,
-      firstTeam,
-      pickRandomStart,
-    } = this.state;
+    var { gameTable, firstTeam, pickRandomStart } = this.state;
     return (
       <div className="bg-blue-900 min-h-screen min-v-screen flex flex-col mx-auto my-auto px-4 pb-3 text-center">
         <p className="text-white text-3xl md:text-4xl font-semibold my-10">
@@ -124,106 +79,30 @@ export default class App extends Component {
           <div className="flex flex-col">
             <table>
               <tbody>
-                <tr>
-                  {firstRow.map((item, index) => {
-                    return (
-                      <td
-                        key={index}
-                        className={`p-5 md:p-7 lg:p-10 border border-black ${
-                          item === `red`
-                            ? `bg-red-600`
-                            : item === `blue`
-                            ? `bg-royalBlue-700`
-                            : item === `white`
-                            ? `bg-white`
-                            : item === `black`
-                            ? `bg-black`
-                            : `bg-lime-400`
-                        }`}
-                      ></td>
-                    );
-                  })}
-                </tr>
-                <tr>
-                  {secondRow.map((item, index) => {
-                    return (
-                      <td
-                        key={index}
-                        className={`p-5 md:p-7 lg:p-10 border border-black ${
-                          item === `red`
-                            ? `bg-red-600`
-                            : item === `blue`
-                            ? `bg-royalBlue-700`
-                            : item === `white`
-                            ? `bg-white`
-                            : item === `black`
-                            ? `bg-black`
-                            : `bg-lime-400`
-                        }`}
-                      ></td>
-                    );
-                  })}
-                </tr>
-                <tr>
-                  {thirdRow.map((item, index) => {
-                    return (
-                      <td
-                        key={index}
-                        className={`p-5 md:p-7 lg:p-10 border border-black ${
-                          item === `red`
-                            ? `bg-red-600`
-                            : item === `blue`
-                            ? `bg-royalBlue-700`
-                            : item === `white`
-                            ? `bg-white`
-                            : item === `black`
-                            ? `bg-black`
-                            : `bg-lime-400`
-                        }`}
-                      ></td>
-                    );
-                  })}
-                </tr>
-                <tr>
-                  {fourthRow.map((item, index) => {
-                    return (
-                      <td
-                        key={index}
-                        className={`p-5 md:p-7 lg:p-10 border border-black ${
-                          item === `red`
-                            ? `bg-red-600`
-                            : item === `blue`
-                            ? `bg-royalBlue-700`
-                            : item === `white`
-                            ? `bg-white`
-                            : item === `black`
-                            ? `bg-black`
-                            : `bg-lime-400`
-                        }`}
-                      ></td>
-                    );
-                  })}
-                </tr>
-                <tr>
-                  {fifthRow.map((item, index) => {
-                    return (
-                      <td
-                        key={index}
-                        className={`p-5 md:p-7 lg:p-10 border border-black ${
-                          item === `red`
-                            ? `bg-red-600`
-                            : item === `blue`
-                            ? `bg-royalBlue-700`
-                            : item === `white`
-                            ? `bg-white`
-                            : item === `black`
-                            ? `bg-black`
-                            : `bg-lime-400`
-                        }`}
-                      ></td>
-                    );
-                  })}
-                </tr>
+                {gameTable.map((row, index) => {
+                  return (
+                    <tr key={index}>
+                      {row.map((item, index) => {
+                        return (
+                          <td
+                            key={index}
+                            className={`p-5 md:p-7 lg:p-10 border border-black ${
+                              item === `red`
+                                ? `bg-red-600`
+                                : item === `blue`
+                                ? `bg-royalBlue-700`
+                                : item === `white`
+                                ? `bg-white`
+                                : item === `black`
+                                ? `bg-black`
+                                : `bg-lime-400`
+                            }`}
+                          ></td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
             {firstTeam !== null ? (
