@@ -73,7 +73,7 @@ export default class App extends Component {
         <p className="text-white text-3xl md:text-4xl font-semibold my-10">
           Codenames Generator
         </p>
-        {!this.state.isGenerated && (
+        {this.state.isGenerated && (
           <div className="flex flex-col">
             <table>
               <tbody>
